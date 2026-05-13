@@ -2,6 +2,30 @@
 
 'use strict';
 
+function divide(left, right) {
+  if (right === 0) {
+    throw new Error('Cannot divide by zero.');
+  }
+
+  return left / right;
+}
+
+function modulo(left, right) {
+  if (right === 0) {
+    throw new Error('Cannot modulo by zero.');
+  }
+
+  return left % right;
+}
+
+function squareRoot(value) {
+  if (value < 0) {
+    throw new Error('Cannot calculate square root of a negative number.');
+  }
+
+  return Math.sqrt(value);
+}
+
 const OPERATIONS = {
   // Addition: add two numbers.
   '+': (left, right) => left + right,
@@ -21,57 +45,15 @@ const OPERATIONS = {
   multiplication: (left, right) => left * right,
 
   // Division: divide the first number by the second.
-  '/': (left, right) => {
-    if (right === 0) {
-      throw new Error('Cannot divide by zero.');
-    }
-
-    return left / right;
-  },
-  '÷': (left, right) => {
-    if (right === 0) {
-      throw new Error('Cannot divide by zero.');
-    }
-
-    return left / right;
-  },
-  divide: (left, right) => {
-    if (right === 0) {
-      throw new Error('Cannot divide by zero.');
-    }
-
-    return left / right;
-  },
-  division: (left, right) => {
-    if (right === 0) {
-      throw new Error('Cannot divide by zero.');
-    }
-
-    return left / right;
-  },
+  '/': divide,
+  '÷': divide,
+  divide,
+  division: divide,
 
   // Modulo: return the remainder of dividing the first number by the second.
-  '%': (left, right) => {
-    if (right === 0) {
-      throw new Error('Cannot modulo by zero.');
-    }
-
-    return left % right;
-  },
-  mod: (left, right) => {
-    if (right === 0) {
-      throw new Error('Cannot modulo by zero.');
-    }
-
-    return left % right;
-  },
-  modulo: (left, right) => {
-    if (right === 0) {
-      throw new Error('Cannot modulo by zero.');
-    }
-
-    return left % right;
-  },
+  '%': modulo,
+  mod: modulo,
+  modulo,
 
   // Exponentiation: raise the first number to the power of the second.
   '^': (left, right) => left ** right,
@@ -81,20 +63,8 @@ const OPERATIONS = {
   exponentiation: (left, right) => left ** right,
 
   // Square root: return the non-negative square root of a number.
-  sqrt: (value) => {
-    if (value < 0) {
-      throw new Error('Cannot calculate square root of a negative number.');
-    }
-
-    return Math.sqrt(value);
-  },
-  '√': (value) => {
-    if (value < 0) {
-      throw new Error('Cannot calculate square root of a negative number.');
-    }
-
-    return Math.sqrt(value);
-  },
+  sqrt: squareRoot,
+  '√': squareRoot,
 };
 
 const UNARY_OPERATIONS = new Set(['sqrt', '√']);
